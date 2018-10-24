@@ -6,9 +6,38 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: darkgray;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.row {
+  margin: 2em;
+}
+
+.card {
+  text-align: center;
+  background-color: lightgray;
+}
+
+.thumbnail {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+}
+
+.buttons {
+  padding: 1.2em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.next,
+.prev {
+  margin: 1em;
 }
