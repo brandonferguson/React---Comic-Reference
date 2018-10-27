@@ -41,3 +41,11 @@ code {
 .prev {
   margin: 1em;
 }
+
+.header {
+  display: block;
+}
+
+.mainImage{
+  float: right;
+}
