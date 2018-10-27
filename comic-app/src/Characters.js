@@ -4,8 +4,8 @@ import "./index.css";
 let apikey = "c91f99ccbccb1552c77fdefabe41a66e";
 
 class Characters extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       characters: [],
       offsetCount: 0
@@ -14,20 +14,22 @@ class Characters extends Component {
 
   async componentDidMount() {
     const characters = await fetch(
-      `https://gateway.marvel.com/v1/public/characters?apikey=${apikey}&offset=0`
+      `https://gateway.marvel.com/v1/public/characters?apikey=${apikey}`
     );
     const json = await characters.json();
     this.setState({ characters: json.data.results });
   }
 
-  async componentWillUpdate() {
-    const characters = await fetch(
-      `https://gateway.marvel.com/v1/public/characters?apikey=${apikey}&offset=${
-        this.state.offsetCount
-      }`
-    );
-    const json = await characters.json();
-    this.setState({ characters: json.data.results });
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevState.offsetCount !== this.state.offsetCount) {
+      const characters = await fetch(
+        `https://gateway.marvel.com/v1/public/characters?apikey=${apikey}&offset=${
+          this.state.offsetCount
+        }`
+      );
+      const json = await characters.json();
+      this.setState({ characters: json.data.results });
+    }
   }
 
   decrementOffset = () => {
